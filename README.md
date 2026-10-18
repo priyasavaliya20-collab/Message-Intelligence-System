@@ -1,7 +1,7 @@
 # 📩 Message Intelligence System
 
+<img width="1200" height="500" alt="pic" src="https://github.com/user-attachments/assets/06c20ef8-f3cd-4123-95a0-8bd6eafd258b" />
 
-This project evaluates understanding of **supervised machine learning classification** with a focus on probability foundations (conditional probability, Bayes' Theorem), instance-based, margin-based and probabilistic classifiers (KNN, SVM, Naive Bayes), and model comparison with classification metrics. Students learn how to build a spam-vs-ham message classifier, analyse how hyperparameters and kernels change predictions, and choose the best model for a real-world deployment.
 
 ---
 
@@ -84,6 +84,16 @@ Your task is to prepare the data, build a KNN baseline, tune it, compare it with
 ## 🧠 Part B : Dataset Understanding & Preparation
 
 
+
+
+
+<img width="1200" height="500" alt="pic" src="https://github.com/user-attachments/assets/0f8eaa57-b3de-4655-b9d9-856dd0d65369" />
+
+
+
+
+
+
 ### 📋 Dataset Overview
 
 ```python
@@ -146,6 +156,11 @@ X_train = scaler.fit_transform(X_train); X_test = scaler.transform(X_test)
 
 
 
+<img width="1200" height="500" alt="pic" src="https://github.com/user-attachments/assets/71b012df-5008-40d2-957d-ec7a3caace3d" />
+
+
+
+
 ### 9️⃣ Implement K-Nearest Neighbors (KNN) classifier
 
 ```python
@@ -193,6 +208,12 @@ model = KNeighborsClassifier(n_neighbors=5, metric=metric)
 ---
 
 ## ⚙️ Part D : Support Vector Machine Classifier
+
+
+
+
+
+
 
 
 
