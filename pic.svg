@@ -1,0 +1,173 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3A171A"/>
+      <stop offset="55%" stop-color="#24160D"/>
+      <stop offset="100%" stop-color="#321719"/>
+    </linearGradient>
+    <linearGradient id="accent">
+      <stop offset="0%" stop-color="#C49A8A"/>
+      <stop offset="100%" stop-color="#E0B8A5"/>
+    </linearGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#C49A8A" opacity=".18"/>
+    </pattern>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .float {
+      animation: float 4s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    .float2 {
+      animation: float 5s ease-in-out infinite reverse;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    .pulse {
+      animation: pulse 2.5s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    .dash {
+      stroke-dasharray: 7 10;
+      animation: flow 8s linear infinite;
+    }
+    .blink {
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-9px); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: .55; transform: scale(.96); }
+      50% { opacity: 1; transform: scale(1.04); }
+    }
+    @keyframes flow {
+      to { stroke-dashoffset: -136; }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: .35; }
+      50% { opacity: 1; }
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="500" rx="26" fill="url(#bg)"/>
+  <rect width="1200" height="500" rx="26" fill="url(#dots)"/>
+
+  <!-- Signal waves -->
+  <path d="M0 390 C180 330 280 510 470 430
+           S790 330 970 415 S1110 465 1200 400"
+        fill="none" stroke="#854D4A" stroke-width="1.5" opacity=".42"/>
+  <path d="M0 420 C180 360 300 535 490 455
+           S810 355 990 440 S1120 490 1200 425"
+        fill="none" stroke="#C49A8A" opacity=".24"/>
+
+  <!-- Main panel -->
+  <rect x="52" y="48" width="1096" height="404" rx="24"
+        fill="#854D4A" fill-opacity=".15"
+        stroke="#C49A8A" stroke-opacity=".3"/>
+
+  <path d="M78 80 H275" stroke="#C49A8A"
+        stroke-width="3" stroke-linecap="round"/>
+  <circle cx="82" cy="80" r="5" fill="#E0B8A5" filter="url(#glow)"/>
+
+  <!-- Heading -->
+  <text x="102" y="112" fill="#C49A8A"
+        font-family="Arial, sans-serif" font-size="13"
+        letter-spacing="4">NLP / SIGNAL ANALYSIS</text>
+
+  <text x="100" y="224" fill="#F4E7DF"
+        font-family="Arial, sans-serif" font-size="51"
+        font-weight="700">Message</text>
+
+  <text x="100" y="285" fill="#E0B8A5"
+        font-family="Arial, sans-serif" font-size="51"
+        font-weight="700">Intelligence System</text>
+
+  <rect x="102" y="315" width="92" height="4" rx="2"
+        fill="url(#accent)"/>
+
+  <text x="102" y="350" fill="#D7BEB4"
+        font-family="Arial, sans-serif" font-size="16"
+        letter-spacing="1.4">Understand the message. Reveal the meaning.</text>
+
+  <!-- Animated intelligence graphic -->
+  <g transform="translate(845 116)">
+    <circle cx="126" cy="117" r="108" fill="none"
+            stroke="#854D4A" stroke-dasharray="3 8"
+            class="dash"/>
+    <circle cx="126" cy="117" r="84"
+            fill="#24160D" fill-opacity=".48"
+            stroke="#C49A8A" stroke-opacity=".42"/>
+    <circle cx="126" cy="117" r="61"
+            fill="none" stroke="#854D4A" class="pulse"/>
+
+    <!-- Main message bubble -->
+    <g class="float">
+      <path d="M78 80 Q78 69 90 69 H156
+               Q168 69 168 81 V112 Q168 124 156 124
+               H111 L94 139 V124 H90 Q78 124 78 112 Z"
+            fill="#854D4A" stroke="#D6A99A" stroke-width="1.5"/>
+      <path d="M95 87 H150 M95 99 H139 M95 111 H128"
+            stroke="#F4E7DF" stroke-width="3"
+            stroke-linecap="round"/>
+    </g>
+
+    <!-- Reply bubble -->
+    <g class="float2">
+      <path d="M145 140 Q145 131 155 131 H191
+               Q201 131 201 141 V162 Q201 172 191 172
+               H177 L165 183 V172 H155 Q145 172 145 162 Z"
+            fill="#C49A8A" stroke="#F0C9B8"/>
+      <circle cx="162" cy="151" r="2.7" fill="#321719"/>
+      <circle cx="173" cy="151" r="2.7" fill="#321719"/>
+      <circle cx="184" cy="151" r="2.7" fill="#321719"/>
+    </g>
+
+    <!-- Signal nodes -->
+    <g fill="#E0B8A5" filter="url(#glow)">
+      <circle cx="26" cy="70" r="4" class="blink"/>
+      <circle cx="218" cy="81" r="3" class="blink"/>
+      <circle cx="55" cy="202" r="3" class="blink"/>
+      <circle cx="222" cy="180" r="4" class="blink"/>
+    </g>
+
+    <path d="M35 117 H61 M191 117 H216
+             M126 15 V39 M126 195 V219"
+          stroke="#C49A8A" stroke-width="1.5"/>
+    <circle cx="35" cy="117" r="3" fill="#C49A8A"/>
+    <circle cx="216" cy="117" r="3" fill="#C49A8A"/>
+    <circle cx="126" cy="15" r="3" fill="#C49A8A"/>
+    <circle cx="126" cy="219" r="3" fill="#C49A8A"/>
+  </g>
+
+  <!-- Insight label -->
+  <g transform="translate(886 365)">
+    <rect width="186" height="34" rx="17"
+          fill="#24160D" stroke="#854D4A"/>
+    <circle cx="18" cy="17" r="4"
+            fill="#C49A8A" class="pulse"/>
+    <text x="31" y="22" fill="#E0B8A5"
+          font-family="Arial, sans-serif" font-size="11"
+          letter-spacing="2">MESSAGE INSIGHT</text>
+  </g>
+
+  <text x="82" y="425" fill="#C49A8A" opacity=".7"
+        font-family="Arial, sans-serif" font-size="10"
+        letter-spacing="3">CLASSIFY • ANALYZE • INTERPRET</text>
+
+  <path d="M1112 80 h18 v18 M1130 80 l-18 18"
+        fill="none" stroke="#C49A8A" stroke-width="1.5"/>
+</svg>
