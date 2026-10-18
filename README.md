@@ -13,11 +13,6 @@ Your task is to prepare the data, build a KNN baseline, tune it, compare it with
 
 ---
 
-## 🌐 Live Demo
-
-[![Live App](https://img.shields.io/badge/🚀_Live_Demo-Open_App-FF4B4B?style=for-the-badge)](YOUR LINK)
-
----
 
 # 📂 Project Files
 
@@ -87,7 +82,7 @@ Your task is to prepare the data, build a KNN baseline, tune it, compare it with
 
 
 
-<img width="1200" height="500" alt="pic" src="https://github.com/user-attachments/assets/0f8eaa57-b3de-4655-b9d9-856dd0d65369" />
+
 
 
 
@@ -156,7 +151,7 @@ X_train = scaler.fit_transform(X_train); X_test = scaler.transform(X_test)
 
 
 
-<img width="1200" height="500" alt="pic" src="https://github.com/user-attachments/assets/71b012df-5008-40d2-957d-ec7a3caace3d" />
+
 
 
 
