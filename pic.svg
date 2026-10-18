@@ -3,62 +3,70 @@
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#24160D"/>
-      <stop offset=".5" stop-color="#3A171A"/>
-      <stop offset="1" stop-color="#160F0B"/>
+      <stop offset=".48" stop-color="#3A171A"/>
+      <stop offset="1" stop-color="#170F0B"/>
     </linearGradient>
     <linearGradient id="rose" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#F0CDBD"/>
       <stop offset="1" stop-color="#C49A8A"/>
     </linearGradient>
+    <pattern id="grain" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="5" r="1" fill="#F0CDBD" opacity=".12"/>
+      <path d="M18 0V34" stroke="#C49A8A" stroke-width=".5" opacity=".06"/>
+    </pattern>
     <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
-      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
       <feMerge>
-        <feMergeNode in="b"/>
+        <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <clipPath id="rightClip">
+      <rect x="690" y="65" width="450" height="360" rx="28"/>
+    </clipPath>
   </defs>
+
   <style>
-    .float {
-      animation: float 4.2s ease-in-out infinite;
+    .drift {
+      animation: drift 5s ease-in-out infinite;
       transform-box: fill-box;
       transform-origin: center;
     }
-    .float2 {
-      animation: float 5.4s ease-in-out infinite reverse;
+    .drift2 {
+      animation: drift 6s ease-in-out infinite reverse;
       transform-box: fill-box;
       transform-origin: center;
     }
     .orbit {
-      stroke-dasharray: 5 9;
-      animation: orbit 18s linear infinite;
-      transform-origin: 930px 240px;
+      stroke-dasharray: 4 10;
+      animation: orbit 16s linear infinite;
+      transform-origin: 895px 245px;
     }
     .pulse {
-      animation: pulse 2.5s ease-in-out infinite;
+      animation: pulse 2.8s ease-in-out infinite;
       transform-box: fill-box;
       transform-origin: center;
     }
-    .link {
-      stroke-dasharray: 7 8;
-      animation: link 3s linear infinite;
+    .scan {
+      animation: scan 3s ease-in-out infinite;
     }
     .spark {
       animation: spark 2s ease-in-out infinite;
     }
-    @keyframes float {
+    @keyframes drift {
       0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      50% { transform: translateY(-10px); }
     }
     @keyframes orbit {
       to { transform: rotate(360deg); }
     }
     @keyframes pulse {
-      0%,100% { opacity: .5; transform: scale(.96); }
-      50% { opacity: 1; transform: scale(1.06); }
+      0%,100% { opacity: .45; transform: scale(.96); }
+      50% { opacity: 1; transform: scale(1.04); }
     }
-    @keyframes link {
-      to { stroke-dashoffset: -90; }
+    @keyframes scan {
+      0%,100% { transform: translateY(0); opacity: .2; }
+      50% { transform: translateY(105px); opacity: 1; }
     }
     @keyframes spark {
       0%,100% { opacity: .25; }
@@ -66,135 +74,143 @@
     }
   </style>
 
+  <!-- Background -->
   <rect width="1200" height="500" rx="28" fill="url(#bg)"/>
+  <rect width="1200" height="500" rx="28" fill="url(#grain)"/>
 
-  <path d="M54 88V55H87 M1113 55H1146V88
-           M54 412V445H87 M1113 445H1146V412"
+  <!-- Editorial frame -->
+  <path d="M55 80V55H80 M1120 55H1145V80
+           M55 420V445H80 M1120 445H1145V420"
         fill="none" stroke="#C49A8A" stroke-width="1.5" opacity=".7"/>
-  <rect x="54" y="55" width="1092" height="390" rx="22"
-        fill="none" stroke="#C49A8A" stroke-opacity=".16"/>
+  <rect x="55" y="55" width="1090" height="390" rx="22"
+        fill="none" stroke="#C49A8A" stroke-opacity=".18"/>
 
-  <!-- Part C label -->
-  <g transform="translate(88 88)">
-    <rect width="92" height="30" rx="15"
-          fill="#854D4A" stroke="#C49A8A" stroke-opacity=".65"/>
-    <text x="46" y="20" text-anchor="middle"
-          fill="#F4E7DF" font-family="Arial,sans-serif"
-          font-size="12" font-weight="700" letter-spacing="1.6">PART C</text>
-    <circle cx="108" cy="15" r="4" fill="#E0B8A5"
-            filter="url(#glow)" class="spark"/>
-    <path d="M121 15H190" stroke="#854D4A" stroke-width="1.5"/>
-  </g>
-
-  <!-- Title -->
-  <text x="88" y="158" fill="#C49A8A"
+  <!-- Section label -->
+  <rect x="86" y="91" width="5" height="66" rx="2.5" fill="url(#rose)"/>
+  <text x="110" y="105" fill="#C49A8A"
         font-family="Arial,sans-serif" font-size="12"
-        letter-spacing="4">MACHINE LEARNING / BASELINE</text>
-  <text x="84" y="222" fill="#F4E7DF"
-        font-family="Arial,sans-serif" font-size="43"
-        font-weight="700">Baseline Model</text>
-  <text x="84" y="277" fill="#E0B8A5"
-        font-family="Arial,sans-serif" font-size="43"
-        font-weight="700">K-Nearest Neighbors</text>
-  <rect x="88" y="301" width="105" height="4" rx="2" fill="url(#rose)"/>
-  <text x="88" y="337" fill="#D7BEB4"
-        font-family="Arial,sans-serif" font-size="15">
-    Find nearby points. Let the neighbors decide.
+        letter-spacing="4">DATA LAB / PHASE 02</text>
+  <text x="108" y="157" fill="#F4E7DF"
+        font-family="Arial,sans-serif" font-size="17"
+        letter-spacing="3">PART B</text>
+  <path d="M109 178H438" stroke="#854D4A" stroke-width="1.5"/>
+  <circle cx="438" cy="178" r="3" fill="#E0B8A5" filter="url(#glow)"/>
+
+  <!-- Main title -->
+  <text x="105" y="239" fill="#F4E7DF"
+        font-family="Arial,sans-serif" font-size="39"
+        font-weight="700">Dataset</text>
+  <text x="105" y="286" fill="#E0B8A5"
+        font-family="Arial,sans-serif" font-size="39"
+        font-weight="700">Understanding</text>
+  <text x="105" y="333" fill="#F4E7DF"
+        font-family="Arial,sans-serif" font-size="39"
+        font-weight="700">&amp; Preparation</text>
+
+  <text x="108" y="373" fill="#D7BEB4"
+        font-family="Arial,sans-serif" font-size="14">
+    From raw records to reliable insights.
   </text>
 
-  <!-- KNN workflow -->
-  <g transform="translate(88 385)">
+  <!-- Workflow rail -->
+  <g transform="translate(108 401)">
     <circle cx="5" cy="0" r="4" fill="#E0B8A5" class="pulse"/>
-    <text x="18" y="4" fill="#C49A8A" font-family="Arial,sans-serif"
-          font-size="10" letter-spacing="1.5">DISTANCE</text>
-    <path d="M103 0H133" stroke="#854D4A" stroke-width="1.5"/>
-    <circle cx="144" cy="0" r="4" fill="#854D4A" class="spark"/>
-    <text x="157" y="4" fill="#C49A8A" font-family="Arial,sans-serif"
-          font-size="10" letter-spacing="1.5">NEIGHBORS</text>
-    <path d="M268 0H298" stroke="#854D4A" stroke-width="1.5"/>
-    <circle cx="309" cy="0" r="4" fill="#E0B8A5" class="pulse"/>
-    <text x="322" y="4" fill="#C49A8A" font-family="Arial,sans-serif"
-          font-size="10" letter-spacing="1.5">PREDICT</text>
+    <text x="18" y="4" fill="#C49A8A"
+          font-family="Arial,sans-serif" font-size="10"
+          letter-spacing="1.5">01 INSPECT</text>
+    <path d="M108 0H143" stroke="#854D4A" stroke-width="1.5"/>
+    <circle cx="154" cy="0" r="4" fill="#854D4A" class="spark"/>
+    <text x="167" y="4" fill="#C49A8A"
+          font-family="Arial,sans-serif" font-size="10"
+          letter-spacing="1.5">02 CLEAN</text>
+    <path d="M251 0H286" stroke="#854D4A" stroke-width="1.5"/>
+    <circle cx="297" cy="0" r="4" fill="#E0B8A5" class="pulse"/>
+    <text x="310" y="4" fill="#C49A8A"
+          font-family="Arial,sans-serif" font-size="10"
+          letter-spacing="1.5">03 PREPARE</text>
   </g>
 
-  <!-- KNN illustration -->
-  <g>
-    <rect x="690" y="78" width="420" height="340" rx="26"
-          fill="#854D4A" fill-opacity=".11"
-          stroke="#C49A8A" stroke-opacity=".24"/>
+  <!-- Data visualization panel -->
+  <g clip-path="url(#rightClip)">
+    <rect x="690" y="65" width="450" height="360" rx="28"
+          fill="#854D4A" fill-opacity=".12"/>
+    <path d="M690 360L820 230L900 285L1030 125L1140 190"
+          fill="none" stroke="#854D4A" stroke-width="1.5" opacity=".55"/>
+    <path d="M690 385L820 255L900 310L1030 150L1140 215"
+          fill="none" stroke="#C49A8A" opacity=".28"/>
 
-    <circle cx="900" cy="245" r="155" fill="none"
+    <circle cx="895" cy="245" r="143" fill="none"
             stroke="#854D4A" stroke-width="1.5" class="orbit"/>
-    <circle cx="900" cy="245" r="120" fill="none"
-            stroke="#C49A8A" stroke-opacity=".24"
-            stroke-dasharray="3 8"/>
+    <circle cx="895" cy="245" r="112"
+            fill="#24160D" fill-opacity=".55"
+            stroke="#C49A8A" stroke-opacity=".45"/>
+    <circle cx="895" cy="245" r="78" fill="none"
+            stroke="#C49A8A" stroke-opacity=".3" class="pulse"/>
 
-    <!-- Nearest-neighbor connections -->
-    <g fill="none" stroke="#C49A8A" stroke-width="1.5"
-       opacity=".8" class="link">
-      <path d="M830 177L900 245"/>
-      <path d="M1001 188L900 245"/>
-      <path d="M823 293L900 245"/>
-      <path d="M970 319L900 245"/>
-      <path d="M1014 271L900 245"/>
+    <!-- Dataset card -->
+    <g class="drift">
+      <rect x="785" y="150" width="144" height="180" rx="12"
+            fill="#F0DED4" stroke="#E0B8A5" stroke-width="1.5"/>
+      <rect x="801" y="166" width="48" height="6" rx="3" fill="#854D4A"/>
+      <rect x="801" y="183" width="96" height="4" rx="2" fill="#C49A8A"/>
+      <path d="M801 204H911 M801 224H911 M801 244H911
+               M801 264H911 M801 284H891"
+            stroke="#C49A8A" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="808" cy="204" r="3" fill="#854D4A"/>
+      <circle cx="808" cy="224" r="3" fill="#854D4A"/>
+      <circle cx="808" cy="244" r="3" fill="#854D4A"/>
+      <circle cx="808" cy="264" r="3" fill="#854D4A"/>
     </g>
 
-    <!-- One data class -->
-    <g fill="#C49A8A" stroke="#F0CDBD" stroke-width="1.5">
-      <circle cx="830" cy="177" r="9" class="float"/>
-      <circle cx="1001" cy="188" r="9" class="float2"/>
-      <circle cx="823" cy="293" r="9" class="float2"/>
-      <circle cx="970" cy="319" r="9" class="float"/>
-      <circle cx="1014" cy="271" r="9" class="float2"/>
-      <circle cx="779" cy="220" r="6" opacity=".65"/>
-      <circle cx="1050" cy="332" r="6" opacity=".65"/>
+    <!-- Mini chart card -->
+    <g class="drift2">
+      <rect x="935" y="256" width="115" height="82" rx="12"
+            fill="#60302F" stroke="#D7B5A7" stroke-width="1.5"/>
+      <path d="M953 309L971 291L988 301L1015 276"
+            fill="none" stroke="#F0CDBD" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="953" cy="309" r="3" fill="#F0CDBD"/>
+      <circle cx="971" cy="291" r="3" fill="#F0CDBD"/>
+      <circle cx="988" cy="301" r="3" fill="#F0CDBD"/>
+      <circle cx="1015" cy="276" r="3" fill="#F0CDBD"/>
     </g>
 
-    <!-- Another data class -->
-    <g fill="#854D4A" stroke="#E0B8A5" stroke-width="1.5">
-      <circle cx="858" cy="245" r="8" class="float2"/>
-      <circle cx="945" cy="153" r="8" class="float"/>
-      <circle cx="1024" cy="226" r="8" class="float2"/>
-      <circle cx="876" cy="342" r="8" class="float"/>
-      <circle cx="944" cy="365" r="6" opacity=".7"/>
+    <!-- Validation check -->
+    <g class="pulse">
+      <circle cx="1019" cy="160" r="28" fill="#854D4A"
+              stroke="#E0B8A5" stroke-width="1.5"/>
+      <path d="M1006 160L1016 170L1033 150"
+            fill="none" stroke="#F4E7DF" stroke-width="4"
+            stroke-linecap="round" stroke-linejoin="round"/>
     </g>
 
-    <!-- Query point -->
-    <circle cx="900" cy="245" r="22" fill="#24160D"
-            stroke="#F0CDBD" stroke-width="2" class="pulse"/>
-    <circle cx="900" cy="245" r="7"
-            fill="#F4E7DF" filter="url(#glow)"/>
-    <path d="M900 214V224 M900 266V276
-             M869 245H879 M921 245H931"
-          stroke="#F0CDBD" stroke-width="1.5"
-          stroke-linecap="round"/>
+    <!-- Scanning beam -->
+    <path class="scan" d="M738 180H1090"
+          stroke="#E0B8A5" stroke-width="2"
+          opacity=".7" filter="url(#glow)"/>
 
-    <!-- K value -->
-    <g transform="translate(1000 96)">
-      <rect width="78" height="32" rx="16"
-            fill="#24160D" stroke="#C49A8A"/>
-      <text x="39" y="21" text-anchor="middle"
-            fill="#E0B8A5" font-family="Arial,sans-serif"
-            font-size="12" font-weight="700" letter-spacing="1">K = 5</text>
-    </g>
-
-    <g transform="translate(742 370)">
-      <circle cx="5" cy="0" r="4" fill="#C49A8A"/>
-      <text x="16" y="4" fill="#D7BEB4"
-            font-family="Arial,sans-serif" font-size="10"
-            letter-spacing="1.3">TRAINING POINTS</text>
-    </g>
-
+    <!-- Glowing data nodes -->
     <g fill="#E0B8A5" filter="url(#glow)">
-      <circle cx="746" cy="128" r="3" class="spark"/>
-      <circle cx="1060" cy="145" r="3" class="spark"/>
-      <circle cx="1070" cy="365" r="4" class="spark"/>
+      <circle cx="747" cy="119" r="3" class="spark"/>
+      <circle cx="1078" cy="356" r="4" class="spark"/>
+      <circle cx="1091" cy="105" r="3" class="spark"/>
+      <circle cx="744" cy="342" r="3" class="spark"/>
     </g>
+  </g>
+
+  <!-- Panel label -->
+  <g transform="translate(935 82)">
+    <rect width="171" height="28" rx="14"
+          fill="#24160D" stroke="#854D4A"/>
+    <circle cx="14" cy="14" r="3.5" fill="#E0B8A5" class="pulse"/>
+    <text x="26" y="18" fill="#E0B8A5"
+          font-family="Arial,sans-serif" font-size="10"
+          letter-spacing="1.5">DATA PREP WORKFLOW</text>
   </g>
 
   <text x="83" y="466" fill="#C49A8A" opacity=".6"
         font-family="Arial,sans-serif" font-size="9"
         letter-spacing="3">
-    DISTANCE • LOCAL PATTERNS • NEIGHBOR VOTING
+    UNDERSTAND THE STRUCTURE • BUILD THE FOUNDATION
   </text>
 </svg>
