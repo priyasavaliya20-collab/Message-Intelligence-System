@@ -1,173 +1,240 @@
 
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="500" viewBox="0 0 1200 500">
+
+  <title>Part C - Baseline Model - K-Nearest Neighbors</title>
+  <desc>Dark maroon machine learning presentation slide with animated KNN visualization.</desc>
+
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#3A171A"/>
-      <stop offset="55%" stop-color="#24160D"/>
-      <stop offset="100%" stop-color="#321719"/>
+      <stop offset="0%" stop-color="#321b18"/>
+      <stop offset="70%" stop-color="#3b1b1e"/>
+      <stop offset="100%" stop-color="#211411"/>
     </linearGradient>
-    <linearGradient id="accent">
-      <stop offset="0%" stop-color="#C49A8A"/>
-      <stop offset="100%" stop-color="#E0B8A5"/>
+
+    <linearGradient id="heading" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e4b9a8"/>
+      <stop offset="100%" stop-color="#d2a091"/>
     </linearGradient>
-    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1" fill="#C49A8A" opacity=".18"/>
-    </pattern>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+
+    <radialGradient id="centerGlow">
+      <stop offset="0%" stop-color="#fff4e8"/>
+      <stop offset="100%" stop-color="#d8b7a4"/>
+    </radialGradient>
+
+    <style>
+      .heading {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-size: 43px;
+        fill: #f5e5dc;
+      }
+      .subheading {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-size: 43px;
+        fill: url(#heading);
+      }
+      .eyebrow {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        letter-spacing: 3px;
+        fill: #c49b8c;
+      }
+      .body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        fill: #d0b9ad;
+      }
+      .label {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        letter-spacing: 1.4px;
+        fill: #cda99a;
+      }
+      .ring {
+        fill: none;
+        stroke: #a76a5e;
+        stroke-width: 1.4;
+        stroke-dasharray: 4 8;
+        transform-origin: 900px 245px;
+        animation: rotateRing 24s linear infinite;
+      }
+      .point {
+        fill: #d3a994;
+        stroke: #e9c5b1;
+        stroke-width: 1.5;
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: pointPulse 2.5s ease-in-out infinite;
+      }
+      .neighbor {
+        stroke: #c29a89;
+        stroke-width: 1.4;
+        stroke-dasharray: 5 6;
+        fill: none;
+      }
+      @keyframes rotateRing {
+        to { stroke-dashoffset: -96; }
+      }
+      @keyframes pointPulse {
+        0%, 100% { opacity: .75; }
+        50% { opacity: 1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ring, .point { animation: none; }
+      }
+    </style>
   </defs>
 
-  <style>
-    .float {
-      animation: float 4s ease-in-out infinite;
-      transform-box: fill-box;
-      transform-origin: center;
-    }
-    .float2 {
-      animation: float 5s ease-in-out infinite reverse;
-      transform-box: fill-box;
-      transform-origin: center;
-    }
-    .pulse {
-      animation: pulse 2.5s ease-in-out infinite;
-      transform-box: fill-box;
-      transform-origin: center;
-    }
-    .dash {
-      stroke-dasharray: 7 10;
-      animation: flow 8s linear infinite;
-    }
-    .blink {
-      animation: blink 2s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-9px); }
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: .55; transform: scale(.96); }
-      50% { opacity: 1; transform: scale(1.04); }
-    }
-    @keyframes flow {
-      to { stroke-dashoffset: -136; }
-    }
-    @keyframes blink {
-      0%, 100% { opacity: .35; }
-      50% { opacity: 1; }
-    }
-  </style>
-
   <!-- Background -->
-  <rect width="1200" height="500" rx="26" fill="url(#bg)"/>
-  <rect width="1200" height="500" rx="26" fill="url(#dots)"/>
+  <rect width="1200" height="500" rx="24" fill="url(#bg)"/>
 
-  <!-- Signal waves -->
-  <path d="M0 390 C180 330 280 510 470 430
-           S790 330 970 415 S1110 465 1200 400"
-        fill="none" stroke="#854D4A" stroke-width="1.5" opacity=".42"/>
-  <path d="M0 420 C180 360 300 535 490 455
-           S810 355 990 440 S1120 490 1200 425"
-        fill="none" stroke="#C49A8A" opacity=".24"/>
+  <!-- Frame -->
+  <rect x="54" y="54" width="1092" height="392"
+        rx="2" fill="none" stroke="#78534a"
+        stroke-opacity=".42"/>
 
-  <!-- Main panel -->
-  <rect x="52" y="48" width="1096" height="404" rx="24"
-        fill="#854D4A" fill-opacity=".15"
-        stroke="#C49A8A" stroke-opacity=".3"/>
-
-  <path d="M78 80 H275" stroke="#C49A8A"
-        stroke-width="3" stroke-linecap="round"/>
-  <circle cx="82" cy="80" r="5" fill="#E0B8A5" filter="url(#glow)"/>
-
-  <!-- Heading -->
-  <text x="102" y="112" fill="#C49A8A"
-        font-family="Arial, sans-serif" font-size="13"
-        letter-spacing="4">NLP / SIGNAL ANALYSIS</text>
-
-  <text x="100" y="224" fill="#F4E7DF"
-        font-family="Arial, sans-serif" font-size="51"
-        font-weight="700">Message</text>
-
-  <text x="100" y="285" fill="#E0B8A5"
-        font-family="Arial, sans-serif" font-size="51"
-        font-weight="700">Intelligence System</text>
-
-  <rect x="102" y="315" width="92" height="4" rx="2"
-        fill="url(#accent)"/>
-
-  <text x="102" y="350" fill="#D7BEB4"
-        font-family="Arial, sans-serif" font-size="16"
-        letter-spacing="1.4">Understand the message. Reveal the meaning.</text>
-
-  <!-- Animated intelligence graphic -->
-  <g transform="translate(845 116)">
-    <circle cx="126" cy="117" r="108" fill="none"
-            stroke="#854D4A" stroke-dasharray="3 8"
-            class="dash"/>
-    <circle cx="126" cy="117" r="84"
-            fill="#24160D" fill-opacity=".48"
-            stroke="#C49A8A" stroke-opacity=".42"/>
-    <circle cx="126" cy="117" r="61"
-            fill="none" stroke="#854D4A" class="pulse"/>
-
-    <!-- Main message bubble -->
-    <g class="float">
-      <path d="M78 80 Q78 69 90 69 H156
-               Q168 69 168 81 V112 Q168 124 156 124
-               H111 L94 139 V124 H90 Q78 124 78 112 Z"
-            fill="#854D4A" stroke="#D6A99A" stroke-width="1.5"/>
-      <path d="M95 87 H150 M95 99 H139 M95 111 H128"
-            stroke="#F4E7DF" stroke-width="3"
-            stroke-linecap="round"/>
-    </g>
-
-    <!-- Reply bubble -->
-    <g class="float2">
-      <path d="M145 140 Q145 131 155 131 H191
-               Q201 131 201 141 V162 Q201 172 191 172
-               H177 L165 183 V172 H155 Q145 172 145 162 Z"
-            fill="#C49A8A" stroke="#F0C9B8"/>
-      <circle cx="162" cy="151" r="2.7" fill="#321719"/>
-      <circle cx="173" cy="151" r="2.7" fill="#321719"/>
-      <circle cx="184" cy="151" r="2.7" fill="#321719"/>
-    </g>
-
-    <!-- Signal nodes -->
-    <g fill="#E0B8A5" filter="url(#glow)">
-      <circle cx="26" cy="70" r="4" class="blink"/>
-      <circle cx="218" cy="81" r="3" class="blink"/>
-      <circle cx="55" cy="202" r="3" class="blink"/>
-      <circle cx="222" cy="180" r="4" class="blink"/>
-    </g>
-
-    <path d="M35 117 H61 M191 117 H216
-             M126 15 V39 M126 195 V219"
-          stroke="#C49A8A" stroke-width="1.5"/>
-    <circle cx="35" cy="117" r="3" fill="#C49A8A"/>
-    <circle cx="216" cy="117" r="3" fill="#C49A8A"/>
-    <circle cx="126" cy="15" r="3" fill="#C49A8A"/>
-    <circle cx="126" cy="219" r="3" fill="#C49A8A"/>
+  <!-- Corner details -->
+  <g stroke="#a67b6a" stroke-width="1.3" fill="none">
+    <path d="M54 88V54H88"/>
+    <path d="M1112 54H1146V88"/>
+    <path d="M54 412V446H88"/>
+    <path d="M1112 446H1146V412"/>
   </g>
 
-  <!-- Insight label -->
-  <g transform="translate(886 365)">
-    <rect width="186" height="34" rx="17"
-          fill="#24160D" stroke="#854D4A"/>
-    <circle cx="18" cy="17" r="4"
-            fill="#C49A8A" class="pulse"/>
-    <text x="31" y="22" fill="#E0B8A5"
-          font-family="Arial, sans-serif" font-size="11"
-          letter-spacing="2">MESSAGE INSIGHT</text>
+  <!-- Part label -->
+  <rect x="88" y="88" width="92" height="30" rx="15"
+        fill="#854b49" stroke="#b37c70"/>
+
+  <text x="134" y="108" text-anchor="middle"
+        font-family="Arial, sans-serif" font-size="12"
+        font-weight="700" letter-spacing="1"
+        fill="#f5e5dc">PART C</text>
+
+  <circle cx="196" cy="103" r="4" fill="#8b6256"/>
+  <path d="M209 103H278" stroke="#8a554d" stroke-width="1.5"/>
+
+  <!-- Left typography -->
+  <text x="88" y="158" class="eyebrow">
+    MACHINE LEARNING / BASELINE
+  </text>
+
+  <text x="84" y="222" class="heading">
+    Baseline Model
+  </text>
+
+  <text x="84" y="277" class="subheading">
+    K-Nearest Neighbors
+  </text>
+
+  <rect x="88" y="301" width="105" height="4"
+        rx="2" fill="#d5a899"/>
+
+  <text x="88" y="337" class="body">
+    Find nearby points. Let the neighbors decide.
+  </text>
+
+  <!-- Workflow -->
+  <g class="label">
+    <circle cx="93" cy="385" r="4" fill="#d3a495"/>
+    <text x="105" y="389">DISTANCE</text>
+
+    <path d="M191 385H221" stroke="#8a554d"/>
+
+    <circle cx="232" cy="385" r="4" fill="#75443d"/>
+    <text x="245" y="389">NEIGHBORS</text>
+
+    <path d="M356 385H392" stroke="#8a554d"/>
+
+    <circle cx="397" cy="385" r="4" fill="#d3a495"/>
+    <text x="410" y="389">PREDICT</text>
   </g>
 
-  <text x="82" y="425" fill="#C49A8A" opacity=".7"
-        font-family="Arial, sans-serif" font-size="10"
-        letter-spacing="3">CLASSIFY • ANALYZE • INTERPRET</text>
+  <!-- Visualization panel -->
+  <rect x="690" y="78" width="420" height="340"
+        rx="26" fill="#4a2526" fill-opacity=".28"
+        stroke="#77504a" stroke-opacity=".65"/>
 
-  <path d="M1112 80 h18 v18 M1130 80 l-18 18"
-        fill="none" stroke="#C49A8A" stroke-width="1.5"/>
+  <!-- K badge -->
+  <rect x="1000" y="96" width="78" height="32"
+        rx="16" fill="#281611" stroke="#c99b88"/>
+
+  <text x="1039" y="116" text-anchor="middle"
+        font-family="Georgia, serif" font-size="13"
+        fill="#e7c6b4">K = 5</text>
+
+  <!-- Distance rings -->
+  <circle class="ring" cx="900" cy="245" r="53"/>
+  <circle class="ring" cx="900" cy="245" r="80"/>
+  <circle class="ring" cx="900" cy="245" r="108"/>
+
+  <!-- Five nearest-neighbor links -->
+  <g class="neighbor">
+    <path d="M900 245L830 170"/>
+    <path d="M900 245L1001 181"/>
+    <path d="M900 245L1014 264"/>
+    <path d="M900 245L970 312"/>
+    <path d="M900 245L823 286"/>
+  </g>
+
+  <!-- Neighbor points -->
+  <g>
+    <circle class="point" cx="830" cy="170" r="9"/>
+    <circle class="point" cx="1001" cy="181" r="9"/>
+    <circle class="point" cx="1014" cy="264" r="9"/>
+    <circle class="point" cx="970" cy="312" r="9"/>
+    <circle class="point" cx="823" cy="286" r="9"/>
+  </g>
+
+  <!-- Other training points -->
+  <g fill="#89635a" stroke="#c49b8c" stroke-width="1.2">
+    <circle class="point" cx="779" cy="220" r="6"/>
+    <circle class="point" cx="858" cy="238" r="8" fill="#c49b8c"/>
+    <circle class="point" cx="1024" cy="219" r="7"/>
+    <circle class="point" cx="876" cy="335" r="8" fill="#c49b8c"/>
+    <circle class="point" cx="945" cy="147" r="8" fill="#c49b8c"/>
+  </g>
+
+  <!-- Distant points -->
+  <g fill="#89635a" opacity=".75">
+    <circle cx="746" cy="128" r="3"/>
+    <circle cx="1060" cy="145" r="3"/>
+    <circle cx="1050" cy="332" r="5"/>
+    <circle cx="944" cy="365" r="5"/>
+    <circle cx="1070" cy="365" r="4"/>
+  </g>
+
+  <!-- Central query point -->
+  <circle cx="900" cy="245" r="22"
+          fill="#321c18" stroke="#c99e8b" stroke-width="1.8"/>
+
+  <circle cx="900" cy="245" r="8"
+          fill="url(#centerGlow)">
+    <animate attributeName="r"
+             values="7;9;7"
+             dur="2.5s"
+             repeatCount="indefinite"/>
+  </circle>
+
+  <g stroke="#e0b8a4" stroke-width="1.5">
+    <path d="M900 213V225"/>
+    <path d="M900 265V277"/>
+    <path d="M868 245H880"/>
+    <path d="M920 245H932"/>
+  </g>
+
+  <!-- Legend -->
+  <circle cx="747" cy="370" r="4" fill="#d3a994"/>
+  <text x="758" y="374" class="label"
+        style="font-size:9px">TRAINING POINTS</text>
+
+  <!-- Footer -->
+  <text x="82" y="466"
+        font-family="Arial, sans-serif"
+        font-size="10" letter-spacing="2.3"
+        fill="#987368">
+    DISTANCE · LOCAL PATTERNS · NEIGHBOR VOTING
+  </text>
 </svg>
