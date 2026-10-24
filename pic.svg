@@ -10,6 +10,10 @@
       <stop offset="0%" stop-color="#ffe0c9"/>
       <stop offset="100%" stop-color="#f09a79"/>
     </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b96650"/>
+      <stop offset="100%" stop-color="#ffc3a1"/>
+    </linearGradient>
     <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
       <circle cx="2" cy="2" r="0.8" fill="#efb49c" opacity=".22"/>
     </pattern>
@@ -21,15 +25,15 @@
       </feMerge>
     </filter>
     <style>
-      .small{font-family:Arial,sans-serif;fill:#d9ad9a;letter-spacing:2.5px}
+      .small{font-family:Arial,sans-serif;fill:#d9ad9a;letter-spacing:2.3px}
       .float{animation:float 3s ease-in-out infinite}
       .pulse{animation:pulse 2s ease-in-out infinite}
       .dash{stroke-dasharray:5 7;animation:dash 7s linear infinite}
-      .orbit{transform-box:fill-box;transform-origin:center;animation:spin 18s linear infinite}
-      @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+      .grow{transform-box:fill-box;transform-origin:left center;animation:grow 2s ease-out both}
+      @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
       @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
       @keyframes dash{to{stroke-dashoffset:-120}}
-      @keyframes spin{to{transform:rotate(360deg)}}
+      @keyframes grow{from{transform:scaleX(.08)}to{transform:scaleX(1)}}
     </style>
   </defs>
 
@@ -39,164 +43,150 @@
   <rect x="30" y="30" width="1140" height="440" rx="24"
         fill="none" stroke="#9c6252" stroke-opacity=".55"/>
 
-  <!-- Header accent -->
+  <!-- Header -->
   <circle cx="82" cy="80" r="6" fill="#ffd1b5" filter="url(#glow)"/>
   <path d="M82 80 H275" stroke="#f4b59a" stroke-width="3"
         stroke-linecap="round"/>
-  <text x="100" y="113" class="small" font-size="13">MACHINE LEARNING / PROBABILITY</text>
+  <text x="100" y="113" class="small" font-size="13">MACHINE LEARNING / PERFORMANCE ANALYSIS</text>
 
   <!-- Main title -->
-  <text x="98" y="210" font-family="Arial,sans-serif"
-        font-size="57" font-weight="700" fill="#fff4ed">Part E :</text>
-  <text x="98" y="272" font-family="Arial,sans-serif"
-        font-size="43" font-weight="700" fill="url(#peach)">Naive Bayes</text>
-  <text x="98" y="325" font-family="Arial,sans-serif"
-        font-size="40" font-weight="700" fill="url(#peach)">Classifier &amp; Probability</text>
+  <text x="98" y="218" font-family="Arial,sans-serif"
+        font-size="57" font-weight="700" fill="#fff4ed">Part F :</text>
+  <text x="98" y="280" font-family="Arial,sans-serif"
+        font-size="43" font-weight="700" fill="url(#peach)">Model Comparison</text>
+  <text x="98" y="333" font-family="Arial,sans-serif"
+        font-size="43" font-weight="700" fill="url(#peach)">&amp; Evaluation</text>
 
-  <rect x="100" y="350" width="112" height="5" rx="2.5" fill="#f4a88a"/>
-  <text x="100" y="390" font-family="Arial,sans-serif"
-        font-size="17" fill="#e8c7b8">Prior Probability</text>
-  <circle cx="250" cy="384" r="3.5" fill="#f6a17f"/>
-  <text x="265" y="390" font-family="Arial,sans-serif"
-        font-size="17" fill="#e8c7b8">Evidence</text>
-  <circle cx="354" cy="384" r="3.5" fill="#f6a17f"/>
-  <text x="369" y="390" font-family="Arial,sans-serif"
-        font-size="17" fill="#e8c7b8">Prediction</text>
+  <rect x="100" y="357" width="112" height="5" rx="2.5" fill="#f4a88a"/>
+  <text x="100" y="396" font-family="Arial,sans-serif"
+        font-size="17" fill="#e8c7b8">Compare Models</text>
+  <circle cx="256" cy="390" r="3.5" fill="#f6a17f"/>
+  <text x="271" y="396" font-family="Arial,sans-serif"
+        font-size="17" fill="#e8c7b8">Evaluate Metrics</text>
+  <circle cx="431" cy="390" r="3.5" fill="#f6a17f"/>
+  <text x="446" y="396" font-family="Arial,sans-serif"
+        font-size="17" fill="#e8c7b8">Select Best Fit</text>
 
-  <!-- Probability workspace -->
-  <rect x="620" y="67" width="360" height="330" rx="17"
+  <!-- Comparison panel -->
+  <rect x="620" y="67" width="355" height="331" rx="17"
         fill="#261410" stroke="#855344" stroke-width="1.2"/>
-  <text x="644" y="95" class="small" font-size="11">PROBABILITY ENGINE</text>
-  <text x="644" y="115" font-family="Arial,sans-serif"
-        font-size="11" fill="#b99180">Evidence updates the prediction</text>
+  <text x="644" y="96" class="small" font-size="11">MODEL SCOREBOARD</text>
+  <text x="644" y="116" font-family="Arial,sans-serif"
+        font-size="11" fill="#b99180">Illustrative comparison · not actual results</text>
 
-  <!-- Animated probability orbit -->
-  <g class="orbit">
-    <circle cx="800" cy="251" r="112" fill="none"
-            stroke="#b97863" stroke-width="1" stroke-dasharray="4 8"/>
-    <circle cx="800" cy="251" r="84" fill="none"
-            stroke="#b97863" stroke-width="1" opacity=".65"/>
-    <circle cx="800" cy="139" r="4" fill="#ffc6a5"/>
-    <circle cx="912" cy="251" r="4" fill="#ffc6a5"/>
-    <circle cx="800" cy="363" r="4" fill="#ffc6a5"/>
-    <circle cx="688" cy="251" r="4" fill="#ffc6a5"/>
+  <!-- Chart grid -->
+  <g stroke="#a66e59" stroke-width=".7" opacity=".25">
+    <path d="M750 143 V328 M790 143 V328 M830 143 V328
+             M870 143 V328 M910 143 V328 M950 143 V328"/>
+  </g>
+  <g font-family="Arial,sans-serif" font-size="9" fill="#bd9583">
+    <text x="745" y="137">0</text>
+    <text x="783" y="137">20</text>
+    <text x="823" y="137">40</text>
+    <text x="863" y="137">60</text>
+    <text x="903" y="137">80</text>
+    <text x="940" y="137">100%</text>
   </g>
 
-  <!-- Prior probability node -->
+  <!-- Model 1 -->
+  <text x="644" y="168" font-family="Arial,sans-serif"
+        font-size="12" fill="#f4d5c4">KNN</text>
+  <rect x="750" y="153" width="200" height="19" rx="5" fill="#492821"/>
+  <rect x="750" y="153" width="142" height="19" rx="5"
+        fill="url(#bar)" class="grow"/>
+  <text x="901" y="167" font-family="Arial,sans-serif"
+        font-size="10" fill="#ffe0c9">71%</text>
+
+  <!-- Model 2 -->
+  <text x="644" y="213" font-family="Arial,sans-serif"
+        font-size="12" fill="#f4d5c4">SVM</text>
+  <rect x="750" y="198" width="200" height="19" rx="5" fill="#492821"/>
+  <rect x="750" y="198" width="164" height="19" rx="5"
+        fill="url(#bar)" class="grow" style="animation-delay:.25s"/>
+  <text x="920" y="212" font-family="Arial,sans-serif"
+        font-size="10" fill="#ffe0c9">82%</text>
+
+  <!-- Model 3 -->
+  <text x="644" y="258" font-family="Arial,sans-serif"
+        font-size="12" fill="#f4d5c4">Naive Bayes</text>
+  <rect x="750" y="243" width="200" height="19" rx="5" fill="#492821"/>
+  <rect x="750" y="243" width="150" height="19" rx="5"
+        fill="url(#bar)" class="grow" style="animation-delay:.5s"/>
+  <text x="906" y="257" font-family="Arial,sans-serif"
+        font-size="10" fill="#ffe0c9">75%</text>
+
+  <!-- Model 4 -->
+  <text x="644" y="303" font-family="Arial,sans-serif"
+        font-size="12" fill="#f4d5c4">Baseline</text>
+  <rect x="750" y="288" width="200" height="19" rx="5" fill="#492821"/>
+  <rect x="750" y="288" width="130" height="19" rx="5"
+        fill="url(#bar)" class="grow" style="animation-delay:.75s"/>
+  <text x="886" y="302" font-family="Arial,sans-serif"
+        font-size="10" fill="#ffe0c9">65%</text>
+
+  <!-- Legend -->
+  <circle cx="649" cy="355" r="4" fill="#f3a17f"/>
+  <text x="660" y="359" font-family="Arial,sans-serif"
+        font-size="10" fill="#d8ac99">Accuracy scores shown for design only</text>
+  <path d="M644 375 H949" stroke="#9c6450" stroke-width="1"/>
+  <text x="644" y="388" font-family="Arial,sans-serif"
+        font-size="10" fill="#d8ac99">Final selection depends on test performance</text>
+
+  <!-- Right: evaluation metrics card -->
   <g class="float">
-    <rect x="648" y="142" width="105" height="55" rx="10"
-          fill="#48261f" stroke="#c8856b" stroke-width="1.3"/>
-    <text x="700" y="162" text-anchor="middle"
-          font-family="Arial,sans-serif" font-size="10"
-          fill="#d9ad9a" letter-spacing="1">PRIOR</text>
-    <text x="700" y="183" text-anchor="middle"
-          font-family="Arial,sans-serif" font-size="18"
-          font-weight="700" fill="#ffe0c9">P(A)</text>
-  </g>
-
-  <!-- Likelihood node -->
-  <g class="float" style="animation-delay:-1s">
-    <rect x="847" y="142" width="105" height="55" rx="10"
-          fill="#48261f" stroke="#c8856b" stroke-width="1.3"/>
-    <text x="899" y="162" text-anchor="middle"
-          font-family="Arial,sans-serif" font-size="10"
-          fill="#d9ad9a" letter-spacing="1">LIKELIHOOD</text>
-    <text x="899" y="183" text-anchor="middle"
-          font-family="Arial,sans-serif" font-size="17"
-          font-weight="700" fill="#ffe0c9">P(B|A)</text>
-  </g>
-
-  <!-- Evidence connections -->
-  <g fill="none" stroke="#f3b69a" stroke-width="1.6" class="dash">
-    <path d="M700 197 Q700 220 760 235"/>
-    <path d="M899 197 Q899 220 840 235"/>
-  </g>
-  <g fill="#ffd1b5" class="pulse">
-    <circle cx="700" cy="197" r="3"/>
-    <circle cx="899" cy="197" r="3"/>
-  </g>
-
-  <!-- Central Bayes probability processor -->
-  <g class="float">
-    <circle cx="800" cy="251" r="52" fill="#4b2921"
-            stroke="#e4a084" stroke-width="1.7"/>
-    <circle cx="800" cy="251" r="42" fill="none"
-            stroke="#b97863" stroke-width="1" stroke-dasharray="3 5"/>
-    <text x="800" y="243" text-anchor="middle"
+    <rect x="993" y="88" width="158" height="137" rx="14"
+          fill="#45251f" stroke="#c8856b" stroke-width="1.4"/>
+    <text x="1010" y="113" class="small" font-size="9">EVALUATION METRICS</text>
+    <rect x="1010" y="128" width="58" height="32" rx="7"
+          fill="#60372b" stroke="#b8755c" stroke-width="1"/>
+    <text x="1039" y="148" text-anchor="middle"
           font-family="Arial,sans-serif" font-size="12"
-          fill="#d9ad9a" letter-spacing="1">BAYES</text>
-    <text x="800" y="267" text-anchor="middle"
-          font-family="Arial,sans-serif" font-size="22"
-          font-weight="700" fill="#ffe0c9">P(A|B)</text>
-    <circle cx="800" cy="251" r="57" fill="none"
-            stroke="#ffc5a5" stroke-opacity=".55"
-            stroke-width="1.2" class="pulse"/>
+          font-weight="700" fill="#ffe0c9">F1</text>
+    <rect x="1077" y="128" width="57" height="32" rx="7"
+          fill="#60372b" stroke="#b8755c" stroke-width="1"/>
+    <text x="1105" y="148" text-anchor="middle"
+          font-family="Arial,sans-serif" font-size="12"
+          font-weight="700" fill="#ffe0c9">AUC</text>
+    <text x="1010" y="183" font-family="Arial,sans-serif"
+          font-size="11" fill="#f4c7b0">Precision · Recall</text>
+    <text x="1010" y="201" font-family="Arial,sans-serif"
+          font-size="11" fill="#f4c7b0">Confusion Matrix</text>
+    <circle cx="1133" cy="208" r="4" fill="#ffc6a5" class="pulse"/>
   </g>
 
-  <!-- Posterior output -->
-  <path d="M800 309 V328" stroke="#f3b69a" stroke-width="2"
-        stroke-dasharray="4 5" class="dash"/>
-  <circle cx="800" cy="321" r="4" fill="#ffc6a5" class="pulse"/>
-
-  <g class="float" style="animation-delay:-.5s">
-    <rect x="741" y="329" width="118" height="43" rx="11"
-          fill="#63372b" stroke="#f1b093" stroke-width="1.4"/>
-    <text x="800" y="346" text-anchor="middle"
-          font-family="Arial,sans-serif" font-size="9"
-          fill="#e6bba7" letter-spacing="1.5">POSTERIOR</text>
-    <text x="800" y="363" text-anchor="middle"
-          font-family="Arial,sans-serif" font-size="15"
-          font-weight="700" fill="#ffe0c9">P(A|B)</text>
-  </g>
-
-  <!-- Formula panel -->
-  <g class="float">
-    <rect x="996" y="105" width="151" height="125" rx="14"
+  <!-- Best model selection card -->
+  <g class="float" style="animation-delay:-1s">
+    <rect x="993" y="243" width="158" height="116" rx="14"
           fill="#45251f" stroke="#c8856b" stroke-width="1.4"/>
-    <text x="1013" y="129" class="small" font-size="9">BAYES' THEOREM</text>
-    <text x="1071" y="157" text-anchor="middle"
-          font-family="Arial,sans-serif" font-size="15"
-          font-weight="700" fill="#ffe0c9">P(A|B) =</text>
-    <text x="1071" y="178" text-anchor="middle"
-          font-family="Arial,sans-serif" font-size="14"
-          fill="#f5c7ad">P(B|A) P(A)</text>
-    <path d="M1018 185 H1124" stroke="#e8b39b" stroke-width="1.2"/>
-    <text x="1071" y="202" text-anchor="middle"
-          font-family="Arial,sans-serif" font-size="14"
-          fill="#ffe0c9">P(B)</text>
-    <circle cx="1130" cy="218" r="4" fill="#ffc6a5" class="pulse"/>
+    <text x="1010" y="268" class="small" font-size="9">FINAL DECISION</text>
+    <circle cx="1024" cy="293" r="9" fill="#f3a17f" opacity=".18"/>
+    <circle cx="1024" cy="293" r="6" fill="none"
+            stroke="#ffc6a5" stroke-width="1.5"/>
+    <path d="M1021 293 L1023 296 L1028 290"
+          fill="none" stroke="#ffe0c9" stroke-width="1.5"/>
+    <text x="1040" y="297" font-family="Arial,sans-serif"
+          font-size="12" font-weight="700" fill="#ffe0c9">Best Model</text>
+    <path d="M1010 311 H1134" stroke="#9c6450" stroke-width="1"/>
+    <text x="1010" y="330" font-family="Arial,sans-serif"
+          font-size="10" fill="#d8ac99">Validate on unseen</text>
+    <text x="1010" y="344" font-family="Arial,sans-serif"
+          font-size="10" fill="#d8ac99">test data</text>
   </g>
 
-  <!-- Classification output card -->
-  <g class="float" style="animation-delay:-1.2s">
-    <rect x="996" y="247" width="151" height="111" rx="14"
-          fill="#45251f" stroke="#c8856b" stroke-width="1.4"/>
-    <text x="1013" y="271" class="small" font-size="9">CLASSIFIER</text>
-    <circle cx="1024" cy="296" r="7" fill="#f3a17f"/>
-    <path d="M1021 296 L1024 299 L1029 292"
-          fill="none" stroke="#3a1d17" stroke-width="1.5"/>
-    <text x="1040" y="300" font-family="Arial,sans-serif"
-          font-size="12" fill="#ffe0c9">Class A</text>
-    <path d="M1013 311 H1130" stroke="#9c6450" stroke-width="1"/>
-    <text x="1013" y="331" font-family="Arial,sans-serif"
-          font-size="10" fill="#d8ac99">Highest probability</text>
-    <text x="1013" y="344" font-family="Arial,sans-serif"
-          font-size="10" fill="#d8ac99">wins prediction</text>
-  </g>
-
-  <!-- Output connection -->
-  <path d="M859 350 H977 Q987 350 987 340 V300 H996"
+  <!-- Animated connector -->
+  <path d="M950 218 H976 Q984 218 984 228 V290 H993"
         fill="none" stroke="#e9a68b" stroke-width="1.4"
         stroke-dasharray="4 5" class="dash"/>
+  <circle cx="976" cy="218" r="3" fill="#ffc7a8" class="pulse"/>
 
   <!-- Status pill -->
-  <rect x="874" y="382" width="246" height="34" rx="17"
+  <rect x="862" y="413" width="265" height="34" rx="17"
         fill="#2b1712" stroke="#b8755c" stroke-width="1.2"/>
-  <circle cx="895" cy="399" r="5" fill="#ffc6a5" filter="url(#glow)"/>
-  <text x="910" y="403" font-family="Arial,sans-serif"
-        font-size="11" letter-spacing="1.5" fill="#f5c7ad">PROBABILITY ANALYZED</text>
+  <circle cx="883" cy="430" r="5" fill="#ffc6a5" filter="url(#glow)"/>
+  <text x="898" y="434" font-family="Arial,sans-serif"
+        font-size="11" letter-spacing="1.6" fill="#f5c7ad">PERFORMANCE REVIEW</text>
 
-  <!-- Bottom flowing waves -->
+  <!-- Bottom waves -->
   <path d="M0 420 C130 370 210 468 350 439
            S540 395 675 445 S900 480 1050 433 S1155 417 1200 433"
         fill="none" stroke="#b96d55" stroke-width="1.2" opacity=".65"/>
@@ -212,10 +202,10 @@
   <!-- Footer -->
   <text x="100" y="461" font-family="Arial,sans-serif"
         font-size="10" letter-spacing="2.5" fill="#c88d76">
-    PRIOR  ·  LIKELIHOOD  ·  POSTERIOR
+    COMPARE  ·  EVALUATE  ·  SELECT
   </text>
 
-  <!-- Corner arrow -->
+  <!-- Corner accent -->
   <path d="M1120 80 H1144 V104 M1144 80 L1124 100"
         fill="none" stroke="#f4b59a" stroke-width="1.8"/>
 </svg>
