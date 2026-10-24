@@ -79,12 +79,7 @@ Your task is to prepare the data, build a KNN baseline, tune it, compare it with
 ## 🧠 Part B : Dataset Understanding & Preparation
 
 
-
-
-
-
-
-
+<img width="1200" height="500" alt="pic" src="https://github.com/user-attachments/assets/cfa60476-b865-4d10-9c9d-35b891b7ad09" />
 
 
 
@@ -149,11 +144,7 @@ X_train = scaler.fit_transform(X_train); X_test = scaler.transform(X_test)
 ## 📊 Part C : Baseline Model – K-Nearest Neighbors
 
 
-
-
-
-
-
+<img width="1200" height="500" alt="pic" src="https://github.com/user-attachments/assets/509210c7-1cfe-40b4-962e-171926a3b6c2" />
 
 
 ### 9️⃣ Implement K-Nearest Neighbors (KNN) classifier
@@ -204,11 +195,7 @@ model = KNeighborsClassifier(n_neighbors=5, metric=metric)
 
 ## ⚙️ Part D : Support Vector Machine Classifier
 
-
-
-
-
-
+<img width="1200" height="500" alt="pic" src="https://github.com/user-attachments/assets/a202380e-8da0-425b-8460-bd18ac6a65a8" />
 
 
 
@@ -248,6 +235,15 @@ svm_rbf = SVC(kernel='rbf').fit(X_train, y_train)
 ---
 
 ## 🧮 Part E : Naive Bayes Classifier & Probability
+
+
+
+<img width="1200" height="500" alt="pic" src="https://github.com/user-attachments/assets/238a8085-124a-4dcc-882d-5a83dadb8291" />
+
+
+
+
+
 
 
 ### 1️⃣6️⃣ Implement Naive Bayes Classifier
@@ -297,6 +293,14 @@ p_legit_given_keyword = (p_keyword_legit * p_legit) / p_keyword
 ---
 
 ## 📈 Part F : Model Comparison & Evaluation
+
+
+<img width="1200" height="500" alt="pic" src="https://github.com/user-attachments/assets/a47cb864-e5a9-440c-b295-afe491f289b9" />
+
+
+
+
+
 
 
 ### 2️⃣0️⃣ Evaluate all models using Accuracy, Precision, Recall and F1 Score
