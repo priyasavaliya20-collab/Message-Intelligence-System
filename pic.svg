@@ -1,0 +1,200 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#321715"/>
+      <stop offset="55%" stop-color="#28140f"/>
+      <stop offset="100%" stop-color="#1b100d"/>
+    </linearGradient>
+    <linearGradient id="peach" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffe0c9"/>
+      <stop offset="100%" stop-color="#f08b68"/>
+    </linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.8" fill="#efb49c" opacity=".24"/>
+    </pattern>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .line{fill:none;stroke:#e6a18a;stroke-width:1.2;opacity:.65}
+      .tiny{font-family:Arial,sans-serif;letter-spacing:3px;fill:#d9ad9a}
+      .float{animation:float 3s ease-in-out infinite}
+      .pulse{animation:pulse 2s ease-in-out infinite}
+      .orbit{transform-box:fill-box;transform-origin:center;animation:spin 18s linear infinite}
+      .dash{stroke-dasharray:5 7;animation:dash 8s linear infinite}
+      @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+      @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+      @keyframes spin{to{transform:rotate(360deg)}}
+      @keyframes dash{to{stroke-dashoffset:-120}}
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="500" rx="25" fill="url(#bg)"/>
+  <rect width="1200" height="500" rx="25" fill="url(#dots)"/>
+  <rect x="30" y="30" width="1140" height="440" rx="24"
+        fill="none" stroke="#9c6252" stroke-opacity=".5"/>
+
+  <!-- Top accent -->
+  <circle cx="82" cy="80" r="6" fill="#ffd1b5" filter="url(#glow)"/>
+  <path d="M82 80 H275" stroke="#f4b59a" stroke-width="3" stroke-linecap="round"/>
+  <text x="100" y="113" class="tiny" font-size="13">DATA SCIENCE / WORKFLOW</text>
+
+  <!-- Main heading -->
+  <text x="98" y="224" font-family="Arial,sans-serif"
+        font-size="53" font-weight="700" fill="#fff4ed">Part B : Dataset</text>
+  <text x="98" y="284" font-family="Arial,sans-serif"
+        font-size="47" font-weight="700" fill="url(#peach)">Understanding &amp;</text>
+  <text x="98" y="339" font-family="Arial,sans-serif"
+        font-size="47" font-weight="700" fill="url(#peach)">Preparation</text>
+
+  <rect x="100" y="366" width="115" height="5" rx="2.5" fill="#f4a88a"/>
+  <text x="100" y="411" font-family="Arial,sans-serif"
+        font-size="18" fill="#e8c7b8">Explore</text>
+  <circle cx="175" cy="405" r="3.5" fill="#f6a17f"/>
+  <text x="190" y="411" font-family="Arial,sans-serif"
+        font-size="18" fill="#e8c7b8">Validate</text>
+  <circle cx="278" cy="405" r="3.5" fill="#f6a17f"/>
+  <text x="294" y="411" font-family="Arial,sans-serif"
+        font-size="18" fill="#e8c7b8">Clean</text>
+  <circle cx="359" cy="405" r="3.5" fill="#f6a17f"/>
+  <text x="375" y="411" font-family="Arial,sans-serif"
+        font-size="18" fill="#e8c7b8">Prepare</text>
+
+  <!-- Right-side orbit system -->
+  <g class="orbit">
+    <circle cx="970" cy="250" r="139" class="line dash"/>
+    <circle cx="970" cy="250" r="111" class="line"/>
+    <circle cx="970" cy="250" r="83" class="line" opacity=".5"/>
+    <circle cx="970" cy="111" r="4" fill="#ffbf9f"/>
+    <circle cx="1109" cy="250" r="4" fill="#ffbf9f"/>
+    <circle cx="970" cy="389" r="4" fill="#ffbf9f"/>
+    <circle cx="831" cy="250" r="4" fill="#ffbf9f"/>
+  </g>
+
+  <!-- Source dataset card -->
+  <g class="float">
+    <rect x="850" y="92" width="115" height="83" rx="10"
+          fill="#492822" stroke="#df9b81" stroke-width="1.4"/>
+    <path d="M865 108 H937 M865 116 H918" stroke="#f4c5ad"
+          stroke-width="2" stroke-linecap="round"/>
+    <g fill="#c77f69">
+      <rect x="865" y="128" width="18" height="10" rx="2"/>
+      <rect x="889" y="128" width="18" height="10" rx="2"/>
+      <rect x="913" y="128" width="18" height="10" rx="2"/>
+      <rect x="865" y="144" width="18" height="10" rx="2"/>
+      <rect x="889" y="144" width="18" height="10" rx="2"/>
+      <rect x="913" y="144" width="18" height="10" rx="2"/>
+    </g>
+  </g>
+
+  <!-- Validation card -->
+  <g class="float" style="animation-delay:-1s">
+    <rect x="1005" y="111" width="120" height="88" rx="10"
+          fill="#4a2824" stroke="#df9b81" stroke-width="1.4"/>
+    <path d="M1020 127 H1108 M1020 135 H1085" stroke="#f4c5ad"
+          stroke-width="2" stroke-linecap="round"/>
+    <g fill="#bd7864">
+      <rect x="1020" y="146" width="15" height="13" rx="2"/>
+      <rect x="1040" y="146" width="15" height="13" rx="2"/>
+      <rect x="1060" y="146" width="15" height="13" rx="2"/>
+    </g>
+    <g fill="none" stroke="#ffcfad" stroke-width="2" stroke-linecap="round">
+      <path d="M1087 151 l4 4 7 -8"/>
+      <path d="M1087 170 l4 4 7 -8"/>
+    </g>
+    <path d="M1020 171 H1075 M1020 182 H1062"
+          stroke="#c58a76" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Animated connectors -->
+  <g fill="none" stroke="#f3b69a" stroke-width="1.6" class="dash">
+    <path d="M908 175 Q908 215 950 223"/>
+    <path d="M1065 199 Q1052 218 990 223"/>
+    <path d="M970 224 V248"/>
+  </g>
+  <g fill="#ffd1b5" class="pulse">
+    <circle cx="908" cy="175" r="4"/>
+    <circle cx="1065" cy="199" r="4"/>
+    <circle cx="970" cy="224" r="4"/>
+  </g>
+
+  <!-- Data-cleaning funnel -->
+  <g class="float">
+    <path d="M895 240 Q970 222 1045 240 L1001 296
+             Q993 307 993 320 V338 H947 V320
+             Q947 307 939 296 Z"
+          fill="#6b3b30" stroke="#ffc5a5" stroke-width="2"/>
+    <ellipse cx="970" cy="240" rx="75" ry="14"
+             fill="#8b5040" stroke="#ffd0b2" stroke-width="2"/>
+    <ellipse cx="970" cy="240" rx="61" ry="8"
+             fill="#301814" stroke="#d88d73" stroke-width="1"/>
+    <g fill="#ffcfad" filter="url(#glow)">
+      <circle cx="942" cy="240" r="3"/>
+      <circle cx="958" cy="237" r="3"/>
+      <circle cx="974" cy="242" r="3"/>
+      <circle cx="989" cy="238" r="3"/>
+      <circle cx="1000" cy="242" r="3"/>
+    </g>
+    <path d="M949 327 H991" stroke="#f4b69a" stroke-width="2"/>
+  </g>
+
+  <!-- Data flow particles -->
+  <g class="pulse" fill="#ffbd9c" filter="url(#glow)">
+    <circle cx="953" cy="346" r="3"/>
+    <circle cx="970" cy="355" r="3"/>
+    <circle cx="987" cy="346" r="3"/>
+  </g>
+  <path d="M953 340 V360 M970 340 V369 M987 340 V360"
+        stroke="#e7a18a" stroke-width="1.5" class="dash"/>
+
+  <!-- Clean database -->
+  <g class="float" style="animation-delay:-.7s">
+    <ellipse cx="970" cy="373" rx="47" ry="15"
+             fill="#8b5040" stroke="#ffc6a5" stroke-width="1.7"/>
+    <path d="M923 373 V419 C923 440 1017 440 1017 419 V373"
+          fill="#48251f" stroke="#ffc6a5" stroke-width="1.7"/>
+    <path d="M923 395 C923 415 1017 415 1017 395"
+          fill="none" stroke="#d9957a" stroke-width="1.5"/>
+    <path d="M923 417 C923 437 1017 437 1017 417"
+          fill="none" stroke="#d9957a" stroke-width="1.5"/>
+    <circle cx="970" cy="400" r="17" fill="#69372d"
+            stroke="#ffb28f" stroke-width="2"/>
+    <path d="M961 400 l6 6 12 -13" fill="none"
+          stroke="#ffe0c9" stroke-width="3"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Status pill -->
+  <rect x="873" y="443" width="195" height="34" rx="17"
+        fill="#2b1712" stroke="#b8755c" stroke-width="1.2"/>
+  <circle cx="893" cy="460" r="6" fill="#ffc6a5" class="pulse"/>
+  <text x="910" y="465" font-family="Arial,sans-serif"
+        font-size="12" letter-spacing="2.4" fill="#f5c7ad">DATA READY</text>
+
+  <!-- Bottom flowing lines -->
+  <path d="M0 420 C130 365 195 475 335 442 S540 375 675 435
+           S895 485 1050 428 S1150 412 1200 430"
+        fill="none" stroke="#b96d55" stroke-width="1.2" opacity=".65"/>
+  <path d="M0 444 C130 389 210 491 345 459 S550 397 690 455
+           S915 493 1060 449 S1155 432 1200 450"
+        fill="none" stroke="#a75e49" stroke-width="1" opacity=".5"/>
+  <g fill="#ffc4a5" filter="url(#glow)" class="pulse">
+    <circle cx="358" cy="442" r="3"/>
+    <circle cx="675" cy="435" r="3"/>
+    <circle cx="1050" cy="428" r="3"/>
+  </g>
+
+  <!-- Corner arrow -->
+  <path d="M1120 80 H1144 V104 M1144 80 L1124 100"
+        fill="none" stroke="#f4b59a" stroke-width="1.8"/>
+  <text x="100" y="461" font-family="Arial,sans-serif"
+        font-size="10" letter-spacing="2.5" fill="#c88d76">
+    PROFILE  ·  INSPECT  ·  TRANSFORM
+  </text>
+</svg>
